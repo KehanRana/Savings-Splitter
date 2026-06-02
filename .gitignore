@@ -1,0 +1,38 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# OSX
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# React Native / Metro
+**/.expo/
+**/dist/
+*.jsbundle
+
+# Xcode / iOS
+**/ios/Pods/
+**/ios/build/
+**/ios/.xcode.env.local
+**/DerivedData/
+*.xcuserstate
+
+# Android
+**/android/build/
+**/android/app/build/
+**/android/.gradle/
+**/android/local.properties
+*.keystore
+!debug.keystore
+
+# Ruby / CocoaPods
+**/vendor/bundle/
+
+# Logs
+*.log
