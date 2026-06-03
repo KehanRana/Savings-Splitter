@@ -21,8 +21,9 @@ exactly how much extra you'd earn per year.
 - **Projection** — extrapolates the annual gain over a 10‑year horizon.
 - **Deposit‑protection guidance** — flags balances over the $250,000 Financial
   Claims Scheme (FCS) guarantee per institution.
-- **Over‑cap warnings** — calls out money that falls back to base rate because
-  it sits above an account's bonus cap.
+- **Over‑cap warnings** — flags any balance that exceeds every selected
+  account's bonus cap and so can't be placed at a bonus rate, reporting it as
+  unallocated.
 
 ## Tech stack
 

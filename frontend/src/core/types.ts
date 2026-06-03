@@ -34,10 +34,8 @@ export interface Account {
  */
 export interface Allocation {
   account: Account;
-  allocated: number;       // total $ placed in this account
-  earnsBonusOn: number;    // portion earning bonusRate (≤ bonusCap)
-  earnsBaseOn: number;     // portion earning baseRate (> bonusCap overflow)
-  annualReturn: number;    // $ earned per year from this allocation
+  allocated: number;       // total $ placed in this account (always ≤ bonusCap)
+  annualReturn: number;    // $ earned per year from this allocation (at bonusRate)
 }
 
 /**

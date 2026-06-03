@@ -51,8 +51,6 @@ describe('optimiseSplit — single account', () => {
     const r = optimiseSplit(50_000, [ING]);
     expect(r.allocations).toHaveLength(1);
     expect(r.allocations[0].allocated).toBe(50_000);
-    expect(r.allocations[0].earnsBonusOn).toBe(50_000);
-    expect(r.allocations[0].earnsBaseOn).toBe(0);
   });
 
   it('calculates correct annual return for single account', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Allocation } from '../core/types';
-import { formatCurrency, formatRate } from '../core/calculator';
+import { formatCurrency } from '../core/calculator';
 import { colors, spacing, typography, radius, theme } from '../theme';
 
 interface Props {
@@ -33,7 +33,6 @@ export default function AllocationTable({
       {/* Data rows */}
       {allocations.map((a, i) => {
         const brandColor = palette[i % palette.length];
-        const isOverCap  = a.earnsBaseOn > 0;
 
         return (
           <View key={a.account.id}>
@@ -67,16 +66,6 @@ export default function AllocationTable({
                 {formatCurrency(a.annualReturn)}
               </Text>
             </View>
-
-            {/* Over-cap warning sub-row */}
-            {isOverCap && (
-              <View style={styles.overCapRow}>
-                <Text style={styles.overCapText}>
-                  {formatCurrency(a.earnsBaseOn)} above cap — earns base{' '}
-                  {formatRate(a.account.baseRate)}
-                </Text>
-              </View>
-            )}
           </View>
         );
       })}
@@ -166,19 +155,6 @@ const styles = StyleSheet.create({
     ...typography.caption,
     color:   colors.textSecondary,
     marginTop: 1,
-  },
-
-  // Over-cap sub-row
-  overCapRow: {
-    paddingHorizontal: spacing.md,
-    paddingBottom:     spacing.sm,
-    borderBottomWidth: 0.5,
-    borderBottomColor: colors.borderDefault,
-    marginTop:         -spacing.xs,
-  },
-  overCapText: {
-    ...typography.caption,
-    color: colors.statusAlert,
   },
 
   // Totals

@@ -38,25 +38,16 @@ export function optimiseSplit(
   for (const account of sorted) {
     if (remaining <= 0) break;
 
+    // Never allocate more than the bonus cap; anything that doesn't fit under
+    // any cap is reported as `unallocated` rather than earning the base rate.
     const allocated = Math.min(remaining, account.bonusCap);
     remaining -= allocated;
 
-    // How much earns the bonus rate vs spills over into base rate?
-    // (In normal operation allocated === bonusCap so earnsBaseOn === 0.
-    //  The only over-cap case is when this is the last account and the
-    //  user has more money than all caps combined — handled by unallocated.)
-    const earnsBonusOn = Math.min(allocated, account.bonusCap);
-    const earnsBaseOn = Math.max(0, allocated - account.bonusCap);
-
-    const annualReturn =
-      earnsBonusOn * (account.bonusRate / 100) +
-      earnsBaseOn * (account.baseRate / 100);
+    const annualReturn = allocated * (account.bonusRate / 100);
 
     allocations.push({
       account,
       allocated,
-      earnsBonusOn,
-      earnsBaseOn,
       annualReturn,
     });
   }

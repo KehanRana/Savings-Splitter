@@ -1,5 +1,12 @@
 import { Account } from './types';
 
+/**
+ * The Australian Government's Financial Claims Scheme (FCS) guarantees deposits
+ * up to this amount per account-holder, per licensed institution. Balances above
+ * it benefit from being split across separate institutions.
+ */
+export const FCS_GUARANTEE_LIMIT = 250_000;
+
 // ─── Seed Accounts ─────────────────────────────────────────────────────────────
 // Rates verified from official bank announcements and savings.com.au
 // as of May/June 2026, following the RBA cash rate increase to 4.35%.

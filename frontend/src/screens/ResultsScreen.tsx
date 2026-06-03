@@ -9,7 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/types';
-import { SEED_ACCOUNTS } from '../core/accounts';
+import { SEED_ACCOUNTS, FCS_GUARANTEE_LIMIT } from '../core/accounts';
 import { formatCurrency, formatRate } from '../core/calculator';
 import { useSplit } from '../hooks/useSplit';
 import MetricCard from '../components/MetricCard';
@@ -44,7 +44,7 @@ export default function ResultsScreen({ navigation, route }: Props) {
 
   const hasGain        = annualGain > 0;
   const exceedsAllCaps = unallocated > 0;
-  const fcsRisk        = balance > 250_000;
+  const fcsRisk        = balance > FCS_GUARANTEE_LIMIT;
 
   return (
     <SafeAreaView style={styles.safeArea} edges={['bottom']}>
@@ -125,9 +125,9 @@ export default function ResultsScreen({ navigation, route }: Props) {
             <View style={styles.bannerBody}>
               <Text style={styles.bannerTitle}>Financial Claims Scheme</Text>
               <Text style={styles.bannerText}>
-                The Australian Government guarantees deposits up to $250,000
-                per institution. Splitting across banks keeps more of your
-                money protected.
+                The Australian Government guarantees deposits up to{' '}
+                {formatCurrency(FCS_GUARANTEE_LIMIT)} per institution. Splitting
+                across banks keeps more of your money protected.
               </Text>
             </View>
           </View>
