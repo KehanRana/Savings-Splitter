@@ -9,7 +9,7 @@ export type AccountType = 'bonus' | 'unconditional';
 
 /**
  * A single savings account product.
- * Seeded from accounts.ts; optionally overwritten by live rate fetch.
+ * Seeded from accounts.ts.
  */
 export interface Account {
   id: string;               // stable identifier, e.g. 'ing-maximiser'
@@ -26,7 +26,6 @@ export interface Account {
 
   dataSource: string;       // URL or label of the rate source
   lastUpdated: string;      // ISO date string, e.g. '2026-05-15'
-  isLive?: boolean;         // true if rate was fetched live this session
 }
 
 /**
